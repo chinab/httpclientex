@@ -8,7 +8,6 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.demo.request.vo.User;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class Main {
 	public static void main(String[] args) {
