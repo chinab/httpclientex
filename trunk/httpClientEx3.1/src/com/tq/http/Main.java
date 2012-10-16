@@ -20,8 +20,8 @@ public class Main {
 		params.clear();
 		System.out.println(Request.getInstance().execPost(actionUserInfo, params));
 		
-		params.add(new NameValuePair("domainNames", "ÐÔ±ð£¬ÊÂ¼þÐÔÖÊ"));
-		params.add(new NameValuePair("separator", "£¬"));
+		params.add(new NameValuePair("domainNames", "æ€§åˆ«ï¼Œäº‹ä»¶æ€§è´¨"));
+		params.add(new NameValuePair("separator", "ï¼Œ"));
 		
 		System.out.println(Request.getInstance().execPost(actionProperty, params));
 	}
