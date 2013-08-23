@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">  
+	<!-- 数据源配置-->
+	 
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="dbc:oracle:thin:@localhost:1521:orcl" />
+		<property name="username" value="tianque02" />
+		<property name="password" value="tianque02" />
+	</bean>
+	<bean id="typeMap" class="com.yumeng.ibatisfactory.oracle.Oracle11SqlTypeMap"></bean>
+<!--
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver" />
+		<property name="url" value="jdbc:jtds:sqlserver://192.168.0.2:1433/qdpjbwg" />
+		<property name="username" value="sa" />
+		<property name="password" value="sa" />
+	</bean>
+	<bean id="typeMap" class="com.yumeng.ibatisfactory.mssql.MsSqlTypeMap"></bean>	
+	-->
+	<!-- 设置模板信息 -->
+	<bean class="com.yumeng.ibatisfactory.IbatorFactoryParams">
+	<!-- 表名 -->
+		<property name="tables" value="SCHOOL_RENTAL_HOUSE"></property>
+	<!-- 包名 -->
+		<property name="pag" value="com.tianque.plugin.schoolAround.rentalHouse"></property>
+	<!-- 模板和保存的路经 参数1：模板相对目录文件。参数2：输出目录。参数3：输出类型（sqlmap，bean，dao为特殊类型会自动命名，其他输出为表名加括展名。）-->
+		<property name="templateList">
+			<list>
+				<value>sqlmapDTemplate.ftl,output/,Dsqlmap</value>
+				<value>sqlmapOTemplate.ftl,output/,sqlmap</value>
+				<!-- <value>sqlmapDTemplate.ftl,output/,sqlmap</value> -->
+				<value>domainTemplate.ftl,output/,domain</value>
+				<value>daoTemplate.ftl,output/,dao</value>
+				<value>daoImplTemplate.ftl,output/,daoImpl</value>
+				<value>serviceTemplate.ftl,output/,service</value>
+				<value>serviceImplTemplate.ftl,output/,serviceImpl</value>
+			</list>
+		</property>
+	</bean>
+</beans>
