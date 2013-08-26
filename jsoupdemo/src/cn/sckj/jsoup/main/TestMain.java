@@ -76,7 +76,7 @@ public class TestMain {
 		String[] str = new String[] { "http://db.yaozh.com/" };
 		Validate.isTrue(str.length == 1, "Ã·π©URL");
 		String url = str[0];
-		drugUrlService.loop1(url);
+		drugUrlService.loop(url);
 		List<String> drugUrlList = drugUrlService.getDrugUrllist();
 		for (String drugurl : drugUrlList) {
 			System.out.println(drugurl);
