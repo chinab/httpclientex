@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+		<property name="jdbcDriver" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/act?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="jdbcUsername" value="root" />
+		<property name="jdbcPassword" value="root" />
+	
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="jobExecutorActivate" value="true" />
+		<property name="history" value="full" />
+
+		<!-- email -->
+		<property name="mailServerHost" value="smtp.gmail.com" />
+		<property name="mailServerPort" value="465" />
+		<property name="mailServerUsername" value="yanhonglei@gmail.com" />
+		<property name="mailServerPassword" value="1111111" />
+
+		<property name="customPostDeployers">
+			<list>
+				<bean class="org.activiti.engine.impl.rules.RulesDeployer" />
+			</list>
+		</property>
+		<property name="beans">
+			<map>
+				<!-- <entry key="muleContext" value-ref="_muleContext" /> -->
+				<entry key="getFieldOfTaskListener" value-ref="getFieldOfTaskListener" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="getFieldOfTaskListener" class="me.kafeitu.activiti.listener.GetFieldOfTaskListener" />
+</beans>
